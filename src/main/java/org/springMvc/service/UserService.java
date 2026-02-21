@@ -17,11 +17,15 @@ public class UserService {
 	UserRepo repo;
 	public String register(User user)
 	{		
+		
+				//check krt ki apn jo user cha data insert krto to already present ahe ka nahi
+				//jr user name already asel tr to tr insert hou nahi mhnun he 
 		        if (repo.existsByUsername(user.getUsername())) {
 		        	logger.info("User name is already exist in database uid ="+user.getUid());
 		            return "Username already exists";
-		            
+		      
 		        }
+		        //user cha password incrpt kele
 		        user.setPassword(encoder.encode(user.getPassword()));
 		        int v=repo.save(user);
 		        if(v>0) {
