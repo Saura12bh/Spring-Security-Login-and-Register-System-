@@ -79,7 +79,7 @@ function register(){
 	     
 	   };
 
-	   fetch("register",{
+	   fetch("/SpringSecurityLoginApplication/user/register",{
 	      method:"POST",
 	      headers:{
 	         "Content-Type":"application/json"

@@ -46,7 +46,7 @@ button{
 <body>
 
 <div class="container">
-    <h2>Login / Register</h2>
+    <h2>Admin Login</h2>
 
     <form method="post">
 
@@ -57,38 +57,34 @@ button{
         <input type="password" name="password" id="password" required>
 
         <div>
-            <button class="login" type="button" onclick="login()">Login</button>
+            <button class="login" type="button" onclick="loginAdmin()">Login</button>
        <button class="back" type="button" >
-                <a href="reg">Back To register</a>
-            </button>
-        </div>
-        <button class="back" type="button" >
-                <a href="adminlog">Go to Admin</a>
+                <a href="backLg">Back To User Login</a>
             </button>
         </div>
     </form>
       <div id="msg" style="color:red; margin-top:10px;"></div>
 </div>
 <script type="text/javascript">
-function login()
+function loginAdmin()
 {
-	let user={
+	let admin={
 	 username:document.getElementById("username").value,
 	 password:document.getElementById("password").value
 	};
 	
-	fetch("/SpringSecurityLoginApplication/user/login",{
+	fetch("/SpringSecurityLoginApplication/admin/adminlogin",{
 	      method:"POST",
 	      headers:{
 	         "Content-Type":"application/json"
 	      },
-	      body: JSON.stringify(user)
+	      body: JSON.stringify(admin)
 	   }).
 	then((res)=>res.text())
 	 .then(msg => {
 
 	      if(msg === "Login Success"){
-	          window.location.href="dashboard";
+	    	  window.location.href="${pageContext.request.contextPath}/admin/adminDashboard";
 	      }else{
 	          document.getElementById("msg").innerHTML = msg;
 	      }

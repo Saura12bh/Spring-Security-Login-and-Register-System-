@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
 	private static final Logger logger=LoggerFactory.getLogger(UserController.class);
@@ -26,8 +27,7 @@ public class UserController {
 	{
 		return "login";
 	}
-	
-    @RequestMapping("/reg")
+	 @RequestMapping("/reg")
     public String reg()
     {
     	return "register";
@@ -36,6 +36,11 @@ public class UserController {
     public String  backLg()
     {
     	return "login";
+    }
+    @RequestMapping("adminlog")
+    public String adminlog()
+    {
+    	return "adminLogin";
     }
     
     @ResponseBody
