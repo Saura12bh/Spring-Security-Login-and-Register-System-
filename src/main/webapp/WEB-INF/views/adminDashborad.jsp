@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Welcome to admin page</h1>
+<h2>Welcome Admin, ${adminName} 👑</h2>
 </body>
 </html>

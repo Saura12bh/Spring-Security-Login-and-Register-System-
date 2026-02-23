@@ -6,11 +6,13 @@ import org.springMvc.repo.AdminRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class AdminService {
 	@Autowired
 	AdminRepo adminRepo;
-	public String login(Admin admin)
+	public String login(Admin admin ,HttpSession session)
 	{
 		Admin dbUser = adminRepo.findByUsername(admin.getUsername());
 
@@ -19,6 +21,7 @@ public class AdminService {
 	    }
 
 	    if (admin.getPassword().equals(dbUser.getPassword())) {
+	    session.setAttribute("name",admin.getUsername());
 	        return "Login Success";
 	    } else {
 	        return "Invalid Password";

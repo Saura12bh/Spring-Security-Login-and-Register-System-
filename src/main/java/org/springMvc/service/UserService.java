@@ -8,6 +8,8 @@ import org.springMvc.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class UserService {
 
@@ -35,7 +37,7 @@ public class UserService {
 		        	 return "Registered not  Successfully";
 		        }
 	}
-	public String login(User user)
+	public String login(User user,HttpSession session)
 	{
 	  
 		User dbUser = repo.findByUsername(user.getUsername());
@@ -45,6 +47,7 @@ public class UserService {
 	    }
 
 	    if (encoder.matches(user.getPassword(), dbUser.getPassword())) {
+	    	session.setAttribute("userName",user.getUsername());
 	        return "Login Success";
 	    } else {
 	        return "Invalid Password";
