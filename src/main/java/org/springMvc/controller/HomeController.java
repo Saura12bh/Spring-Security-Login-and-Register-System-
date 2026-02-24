@@ -11,3 +11,4 @@ public class HomeController {
         return "redirect:/user/";
     }
 }
+//http://localhost:7000/SpringSecurityLoginApp/
